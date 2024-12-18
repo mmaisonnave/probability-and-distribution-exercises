@@ -1,11 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def describe_variable(var, name):
-    print(f'{name}:')
-    print(f'mean={np.average(var):3.2f}')
-    print(f'var= {np.var(var):3.2f}')
-    print()
+import sys
+sys.path.append('..')
+from utils import io
 
 def main():
     print('hello world!')
@@ -16,13 +14,13 @@ def main():
     X = rng.normal(loc=1, scale=3, size=15000)
     Y = rng.normal(loc=9, scale=4, size=15000)
 
-    describe_variable(var=X, name='X')
-    describe_variable(var=Y, name='Y')
+    io.describe_variable(variable=X, name='X')
+    io.describe_variable(variable=Y, name='Y')
 
     Z = X+Y
     # VAR(Z) = VAR(X+Y) = VAR(X) + VAR(Y) = 16 + 9 = 25
     #  E(Z)  =  E(X+Y)  =  E(X)  +   E(Y) = 9 + 1  = 10
-    describe_variable(var=Z, name='Z')
+    io.describe_variable(variable=Z, name='Z')
 
     # Plot X, Y, and Z distributions in subplots
     fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(15, 5))
